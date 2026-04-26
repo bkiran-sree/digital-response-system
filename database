@@ -1,0 +1,66 @@
+-- Create Database
+CREATE DATABASE disaster_response;
+USE disaster_response;
+
+-- Users Table
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    password VARCHAR(255),
+    role ENUM('citizen', 'volunteer', 'admin'),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Emergency Reports Table
+CREATE TABLE emergency_reports (
+    report_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    description TEXT,
+    latitude DECIMAL(10,8),
+    longitude DECIMAL(11,8),
+    status ENUM('pending', 'in_progress', 'resolved') DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+-- Resources Table
+CREATE TABLE resources (
+    resource_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    type VARCHAR(50),
+    quantity INT,
+    location VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Volunteers Table
+CREATE TABLE volunteers (
+    volunteer_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    availability BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+-- Assignments Table
+CREATE TABLE assignments (
+    assignment_id INT AUTO_INCREMENT PRIMARY KEY,
+    report_id INT,
+    volunteer_id INT,
+    assigned_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (report_id) REFERENCES emergency_reports(report_id),
+    FOREIGN KEY (volunteer_id) REFERENCES volunteers(volunteer_id)
+);
+
+-- Sample Data
+INSERT INTO users (name, email, password, role) VALUES
+('Kiran Sree', 'kiran@example.com', 'password123', 'citizen'),
+('Rahul Kumar', 'rahul@example.com', 'password123', 'volunteer'),
+('Admin User', 'admin@example.com', 'admin123', 'admin');
+
+INSERT INTO emergency_reports (user_id, description, latitude, longitude, status) VALUES
+(1, 'Flood in my area', 13.0827, 80.2707, 'pending');
+
+INSERT INTO resources (name, type, quantity, location) VALUES
+('Food Packets', 'Food', 100, 'Chennai'),
+('Medical Kit', 'Medical', 50, 'Chennai');
