@@ -73,6 +73,9 @@ main screen...
 
 
 ---
+## database
+<img width="1363" height="470" alt="image" src="https://github.com/user-attachments/assets/ca2f404e-f39d-423e-9bb0-270359a693ca" />
+
 
 ## 🌱 Future Enhancements
 
