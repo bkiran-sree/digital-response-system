@@ -1,0 +1,75 @@
+.resource-tracker-container {
+  padding: 30px;
+  background: #f3f6fb;
+  border-radius: 20px;
+  max-width: 1100px;
+  margin: 20px auto;
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #2d3e50;
+  margin-bottom: 20px;
+}
+
+.resource-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+  justify-content: center;
+}
+
+.resource-form input, .resource-form select {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.add-btn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.add-btn:hover {
+  background: #45a049;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.resource-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.resource-table th, .resource-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.resource-table th {
+  background-color: #007bff;
+  color: white;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #d9534f;
+  cursor: pointer;
+}
